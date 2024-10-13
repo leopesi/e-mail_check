@@ -1,0 +1,102 @@
+{% extends '_base.html' %}
+
+{% from 'bootstrap/form.html' import render_form %}
+
+{% block content %}
+
+  <header class="content-header text-center">
+    <h4>How to Send Confirmation Emails in Flask Using Redis Queue and AWS SES</h4>
+    
+    <section class="my-4">
+      <h5>Understanding the Components:</h5>
+      
+      <ul class="list-unstyled">
+        <li>
+          <p><strong>Python Flask:</strong> A lightweight and flexible web framework.</p>
+        </li>
+        <li>
+          <p><strong>Redis Queue:</strong> Enables adding asynchronous tasks to a Redis queue.<br>
+            This means that sending emails will not block the main application execution, improving performance.
+          </p>
+        </li>
+        <li>
+          <p><strong>Amazon SES:</strong> Allows you to send emails at scale, reliably, and at a low cost.</p>
+        </li>
+      </ul>
+    </section>
+    
+    <hr class="my-4">
+  </header>
+
+
+
+  <div class="container">
+
+    <!-- Botão para abrir o modal -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-6 text-center">
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#formModal">
+          Sign up
+        </button>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h3 class="text-center">Registered Users</h3>
+        <div class="table-responsive">
+          <table class="table table-dark mt-4">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Email</th>
+                <th scope="col">Email Sent?</th>
+                <th scope="col">Confirmed?</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for user in users %}
+              <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                  {% if user.email_sent %}
+                    <i class="fas fa-check text-success" title="Email Sent"></i>
+                  {% else %}
+                    <i class="fas fa-times text-danger" title="Email Not Sent"></i>
+                  {% endif %}
+                </td>
+                <td>
+                  {% if user.confirmed %}
+                    <i class="fas fa-check text-success" title="Confirmed"></i>
+                  {% else %}
+                    <i class="fas fa-times text-danger" title="Not Confirmed"></i>
+                  {% endif %}
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title " id="formModalLabel">We need to verify your identity</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{ render_form(form, button_style='primary') }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
