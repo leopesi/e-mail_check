@@ -1,0 +1,72 @@
+/* custom css */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+}
+
+/* main.css */
+
+/* Background and text colors */
+body {
+  padding-top: 2rem;
+  margin-bottom: 60px;
+  background-color: #121212; /* Cor de fundo escura */
+  color: #ffffff; /* Cor do texto claro */
+}
+
+/* Table styles */
+
+
+.table td {
+  border-top: 1px solid #444444; /* Borda superior das células */
+  color: #abb88a; /* Cor do texto claro */
+}
+
+/* Alert styles */
+.alert {
+  background-color: #333333; /* Cor de fundo do alerta */
+  color: #ffffff; /* Cor do texto do alerta */
+}
+
+/* Button styles */
+.btn-primary {
+  background-color: #007bff; /* Cor do botão primário */
+  border-color: #007bff; /* Cor da borda do botão primário */
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Cor ao passar o mouse no botão */
+  border-color: #0056b3; /* Cor da borda ao passar o mouse */
+}
+
+/* Modal styles */
+.modal-content {
+  background-color: #686767; /* Cor de fundo do modal */
+  color: #ffffff; /* Cor do texto no modal */
+}
+
+.modal-header {
+  border-bottom: 1px solid #444444; /* Borda inferior do cabeçalho do modal */
+}
+
+/* Links */
+a {
+  color: #c9e71c; /* Cor dos links */
+}
+
+a:hover {
+  color: #828a14; /* Cor dos links ao passar o mouse */
+}
+
+strong {
+  color: #729e0a; /* Um tom de verde */
+}
