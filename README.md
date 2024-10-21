@@ -1,10 +1,9 @@
 # Sending confirmation Emails with Flask, Redis Queue, and Amazon SES
 
-Send confirmation emails to newly registered users with Flask, Redis Queue, and Amazon SES
-
-### Want to learn how to build this?
-
-Check out the [article](https://testdriven.io/sending-confirmation-emails-with-flask-rq-and-ses).
+Nesse trabalho foi criado um código em python para testar um fluxo que envolve um processo comum de verificação de e-mail em uma aplicação cliente/servidor, usado normalmente durante o registro de novos usuários. A confirmação de e-mail é essencial para garantir que os usuários forneçam endereços válidos e acessíveis.
+A integração começa ao adicionar o Redis Queue ao aplicativo Flask para gerenciar tarefas assíncronas, como o envio de e-mails de verificação. Essas tarefas são executadas em segundo plano por meio de um processo de trabalho separado, permitindo que a aplicação continue a responder rapidamente às solicitações dos usuários. O Docker é utilizado para conterizar o Flask e o Redis, simplificando o gerenciamento de dependências e a implantação da aplicação.
+Para tokens de confirmação de e-mail, utiliza-se o módulo itsdangerous, que codifica e decodifica informações de forma segura, gerando links de verificação únicos para cada usuário. Quando o usuário clica no link enviado por e-mail (usando o Amazon SES para gerenciar os envios transacionais), o servidor processa a solicitação e atualiza o status do registro no banco de dados via um endpoint GET.
+Além disso, a interação com a API da AWS é feita por meio do Boto3, o que permite acessar serviços como o SES para envio de e-mails. Isso forma um ciclo completo e eficiente para a confirmação de e-mail.
 
 ## Want to use this project?
 
